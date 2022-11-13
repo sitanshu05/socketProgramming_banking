@@ -1,5 +1,4 @@
 import socket
-
 port = 8041
 
 s = socket.socket()

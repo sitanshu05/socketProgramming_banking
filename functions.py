@@ -24,29 +24,29 @@ def create(args):
         return str(newAcc.accNo)
 
 def credit(args):
-    if args.balance < 0:
+    if int(args.amt) < 0:
         return '-300'
 
     for i in acc:
-        if args.accNo == i.accNo:
+        if int(args.accNo) == i.accNo:
             if args.password == i.password:
-                i.balance = i.balance + args.amt
+                i.balance = i.balance + float(args.amt)
                 return str(i.balance)
             else:
                 return '-200'
     return '-501'
 
 def debit(args):
-    if args.balance < 0:
+    if int(args.amt) < 0:
         return '-300'
 
     for i in acc:
-        if args.accNo == i.accNo:
+        if int(args.accNo) == i.accNo:
             if args.password == i.password:
-                if(args.amt > i.balance):
+                if(float(args.amt) > i.balance):
                     return '-301'
                 else:
-                    i.balance = i.balance - args.amt
+                    i.balance = i.balance - float(args.amt)
                     return str(i.balance)
             else:
                 return '-200'
@@ -54,7 +54,7 @@ def debit(args):
 
 def bal(args):
     for i in acc:
-        if args.accNo == i.accNo:
+        if int(args.accNo) == i.accNo:
             if args.password == i.password:
                     return str(i.balance)
             else:
